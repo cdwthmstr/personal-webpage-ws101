@@ -7,7 +7,11 @@
 <img src="https://img.shields.io/badge/status-coursework-ffd700?style=for-the-badge&labelColor=1a1a1a" />
 <img src="https://img.shields.io/badge/course-WS101-ffa500?style=for-the-badge&labelColor=1a1a1a" />
 
+<br />
+
 <img src="https://skillicons.dev/icons?i=html,css" />
+
+<br />
 
 <p>
   <a href="https://lab1-ws101.netlify.app/">Live Demo</a> &middot;

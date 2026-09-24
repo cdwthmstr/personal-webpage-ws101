@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=7e321073-10f3-45ba-b4f8-257a26680003
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Personal Webpage</title>
+        <style>
+            /* Profile Image */
+            .profile-img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                border: 3px solid var(--primary-color);
+                margin: 0 auto 20px;
+                display: block;
+                object-fit: cover;
+                box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+            }
+
+            header {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            /* Base Styles */
+            :root {
+                --primary-color: #ffd700; /* Gold/Yellow */
+                --secondary-color: #ffa500; /* Orange-Yellow */
+                --accent-color: #ffd700; /* Gold */
+                --text-color: #ffffff; /* White text */
+                --glass-bg: rgba(0, 0, 0, 0.4); /* Semi-transparent black */
+                --glass-border: rgba(255, 255, 255, 0.1);
+                --glass-blur: blur(10px);
+            }
+
+            body {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                line-height: 1.6;
+                color: var(--text-color);
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+                min-height: 100vh;
+            }
+
+            .container {
+                background: var(--glass-bg);
+                backdrop-filter: var(--glass-blur);
+                -webkit-backdrop-filter: var(--glass-blur);
+                border: 1px solid var(--glass-border);
+                border-radius: 15px;
+                padding: 30px;
+                box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+                margin-top: 20px;
+                margin-bottom: 40px;
+            }
+
+            /* Header Styles */
+            header h1 {
+                color: var(--primary-color);
+                text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+                padding-bottom: 10px;
+                margin-bottom: 25px;
+                font-size: 2.5em;
+                position: relative;
+                display: inline-block;
+            }
+
+            header h1:after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--primary-color),
+                    transparent
+                );
+            }
+
+            header h2 {
+                color: rgba(255, 255, 255, 0.8);
+                font-weight: 300;
+                margin-top: -15px;
+                font-size: 1.2em;
+            }
+
+            /* Section Styles */
+            section {
+                margin-bottom: 30px;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.3);
+                border-radius: 10px;
+                border: 1px solid var(--glass-border);
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            section:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(255, 215, 0, 0.1);
+            }
+
+            section h2 {
+                color: var(--primary-color);
+                margin-top: 0;
+                padding-bottom: 8px;
+                font-size: 1.5em;
+                position: relative;
+                display: inline-block;
+            }
+
+            section h2:after {
+                content: "";
+                position: absolute;
+                width: 50%;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background: var(--primary-color);
+            }
+
+            /* List Styles */
+            ul,
+            ol {
+                padding-left: 20px;
+                color: rgba(255, 255, 255, 0.9);
+            }
+
+            li {
+                margin-bottom: 10px;
+                position: relative;
+                padding-left: 10px;
+            }
+
+            li:before {
+                content: "•";
+                color: var(--primary-color);
+                position: absolute;
+                left: -15px;
+            }
+
+            /* Link Styles */
+            a {
+                color: var(--primary-color);
+                text-decoration: none;
+                transition: all 0.3s ease;
+                position: relative;
+                font-weight: 500;
+            }
+
+            a:hover {
+                color: #ffffff;
+                text-shadow: 0 0 5px var(--primary-color);
+            }
+
+            /* Removed underline effect on hover */
+            a:hover {
+                text-shadow: 0 0 5px var(--primary-color);
+            }
+
+            /* Table Styles */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+                color: var(--text-color);
+            }
+
+            th,
+            td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid var(--glass-border);
+            }
+
+            th {
+                background-color: rgba(0, 0, 0, 0.2);
+                color: var(--primary-color);
+            }
+
+            tr:hover {
+                background-color: rgba(255, 255, 255, 0.05);
+            }
+
+            /* Horizontal Rule */
+            hr {
+                border: 0;
+                height: 1px;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--primary-color),
+                    transparent
+                );
+                margin: 30px 0;
+            }
+
+            /* Links Container */
+            .links-container p {
+                margin: 10px 0;
+                padding: 8px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .links-container p:last-child {
+                border-bottom: none;
+            }
+
+            /* Gallery Styles */
+            .gallery-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                margin: 20px 0;
+                justify-content: center;
+            }
+
+            .gallery-item {
+                position: relative;
+                width: 200px;
+                text-align: center;
+                transition: transform 0.3s ease;
+            }
+
+            .gallery-item:hover {
+                transform: translateY(-5px);
+            }
+
+            .project-thumbnail {
+                width: 100%;
+                height: 150px;
+                object-fit: cover;
+                border-radius: 8px;
+                border: 2px solid var(--primary-color);
+                transition: all 0.3s ease;
+            }
+
+            .gallery-item a {
+                position: relative;
+                display: block;
+                text-decoration: none;
+            }
+
+            .project-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                border-radius: 6px;
+            }
+
+            .gallery-item:hover .project-overlay {
+                opacity: 1;
+            }
+
+            .project-overlay span {
+                color: white;
+                background: var(--primary-color);
+                padding: 5px 10px;
+                border-radius: 4px;
+                font-size: 0.9em;
+            }
+
+            .project-title {
+                margin: 8px 0 0;
+                color: var(--primary-color);
+                font-weight: 500;
+            }
+
+            .gallery-note {
+                text-align: center;
+                margin-top: 10px;
+                font-size: 0.9em;
+                color: rgba(255, 255, 255, 0.7);
+            }
+
+            /* Footer Styles */
+            footer {
+                margin-top: 40px;
+                text-align: right;
+                font-size: 0.9em;
+                color: rgba(255, 255, 255, 0.6);
+                padding-top: 15px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* Responsive Design */
+            @media (max-width: 600px) {
+                .container {
+                    padding: 20px 15px;
+                    margin: 10px;
+                }
+
+                body {
+                    padding: 10px 0;
+                }
+
+                header h1 {
+                    font-size: 2em;
+                }
+
+                section {
+                    padding: 15px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <img
+                    src="formal-yellow.png"
+                    alt="Profile Picture"
+                    class="profile-img"
+                />
+                <h1>Master Guilliver Jaravata</h1>
+                <h2>System Administrator</h2>
+            </header>
+
+            <main>
+                <section class="intro">
+                    <h2>Introduction</h2>
+                    <p>
+                        A passionate IT student based in the Philippines,
+                        currently in my third year of studies. Aspiring Network
+                        Aspiring Network Engineer/System Administrator with a
+                        strong interest in networking technologies and planning
+                        to pursue CCNA certification. Eager to apply my
+                        knowledge in real-world scenarios and continuously learn
+                        about the latest in IT infrastructure.
+                    </p>
+                </section>
+
+                <section class="profile">
+                    <h2>Profile</h2>
+                    <p>
+                        <strong>Education:</strong><br />
+                        • Currently in 3rd Year BS in Information Technology<br />
+                        • Expected Graduation: 2026-2027
+                    </p>
+
+                    <p>
+                        <strong>Current Focus:</strong><br />
+                        • Mastering Linux distributions (Kali Linux, Arch Linux,
+                        Ubuntu)<br />
+                        • Preparing for CCNA certification<br />
+                        • Enhancing networking skills (TCP/IP, Routing &
+                        Switching)<br />
+                        • Learning about network security fundamentals<br />
+                        • Gaining hands-on experience with networking
+                        equipment<br />
+                        • Exploring penetration testing with Kali Linux<br />
+                        • Customizing Arch Linux environments
+                    </p>
+
+                    <p>
+                        <strong>Technical Skills (Learning):</strong><br />
+                        • Network Configuration<br />
+                        • Basic System Administration<br />
+                        • Troubleshooting<br />
+                        • Cloud Computing Basics
+                    </p>
+                </section>
+
+                <section class="skills">
+                    <h2>Academic & Technical Skills</h2>
+                    <table>
+                        <tr>
+                            <th>Category</th>
+                            <th>Skills & Knowledge</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Networking</strong></td>
+                            <td>TCP/IP, Subnetting, Network Fundamentals</td>
+                            <td>In Progress</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Operating Systems</strong></td>
+                            <td>Windows, Linux (Kali, Arch, Ubuntu)</td>
+                            <td>In Progress</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Certifications</strong></td>
+                            <td>CCNA (Planned), CompTIA Network+ (Planned)</td>
+                            <td>2027-2028</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section class="resources">
+                    <h2>Learning Resources</h2>
+                    <div class="links-container">
+                        <p>
+                            <a href="https://www.netacad.com" target="_blank">
+                                <b>Cisco NetAcad</b> - Networking courses and
+                                CCNA prep
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://www.udemy.com" target="_blank">
+                                <i>Udemy</i> - Online courses for IT skills
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://www.packtpub.com" target="_blank">
+                                <i>Packt</i> - IT and programming ebooks
+                            </a>
+                        </p>
+                    </div>
+                </section>
+
+                <section class="gallery">
+                    <h2>Academic Projects</h2>
+                    <p>
+                        Here are some of my school and personal learning
+                        projects:
+                    </p>
+                    <div class="gallery-container">
+                        <div class="gallery-item">
+                            <a href="network-lab-system.png" target="_blank">
+                                <img
+                                    src="network-lab-system.png"
+                                    alt="Network Lab Setup"
+                                    class="project-thumbnail"
+                                />
+                                <div class="project-overlay">
+                                    <span>View Project</span>
+                                </div>
+                            </a>
+                            <p class="project-title">Network Lab Setup</p>
+                            <p class="project-desc">
+                                Hands-on practice with network devices and
+                                configurations
+                            </p>
+                        </div>
+                        <div class="gallery-item">
+                            <a href="linux-server-system.png" target="_blank">
+                                <img
+                                    src="linux-server-system.png"
+                                    alt="Linux Server Setup"
+                                    class="project-thumbnail"
+                                />
+                                <div class="project-overlay">
+                                    <span>View Project</span>
+                                </div>
+                            </a>
+                            <p class="project-title">Linux Server Setup</p>
+                            <p class="project-desc">
+                                Configuring and managing Linux server
+                                environments
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <hr />
+
+            <footer>
+                <p>
+                    <strong>Author:</strong> Master Guilliver Jaravata<br />
+                    <strong>Last Modified:</strong> December 16, 2025
+                </p>
+                <p>
+                    <small>© 2025 All Rights Reserved</small>
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
